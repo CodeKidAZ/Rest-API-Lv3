@@ -1,0 +1,369 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Authors and Books REST API",
+    "version": "1.0.0",
+    "title": "SUMIT LAB6",
+    "contact": {}
+  },
+  "host": "localhost:8081",
+  "basePath": "/v1",
+  "tags": [
+    {
+      "name": "Authors"
+    },
+    {
+      "name": "Books"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/Authors": {
+      "post": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "To create new Authors",
+        "description": "To create new Authors",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Authors"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "New Author was created",
+            "schema": {
+              "$ref": "#/definitions/Authors"
+            }
+          },
+          "400": {
+            "description": "Parameter id is missing",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Authors/{id}": {
+      "get": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "To get details of Authors by id",
+        "description": "To get details of Authors by id",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Authors"
+            }
+          },
+          "204": {
+            "description": "Requested content not found in server"
+          },
+          "400": {
+            "description": "Malformed request syntax",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "To update Authors by id",
+        "description": "To update Authors by id",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Authors"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Author with specified id is updated",
+            "schema": {
+              "$ref": "#/definitions/Authors"
+            }
+          },
+          "400": {
+            "description": "Parameter id is missing",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Error"
+              }
+            }
+          },
+          "404": {
+            "description": "Author to modify not found in database"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Authors"
+        ],
+        "summary": "To delete Authors by id",
+        "description": "To delete Authors by id",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Author with specified id deleted",
+            "schema": {
+              "$ref": "#/definitions/Authors"
+            }
+          },
+          "400": {
+            "description": "Parameter id is missing",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Author to delete not found in database"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Books": {
+      "post": {
+        "tags": [
+          "Books"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          },
+          "400": {
+            "description": "Error 400",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Books/{isbn}": {
+      "get": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "To get books by isbn",
+        "description": "To get books by isbn",
+        "consumes": [],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Books"
+            }
+          },
+          "204": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "To update Books by isbn",
+        "description": "To update Books by isbn",
+        "consumes": [],
+        "produces": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Error 404"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Books"
+        ],
+        "summary": "To delete books by isbn",
+        "description": "To delete books by isbn",
+        "consumes": [],
+        "produces": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Authors": {
+      "type": "object",
+      "required": [
+        "firstname",
+        "id",
+        "lastname"
+      ],
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "lastname": {
+          "type": "string"
+        }
+      }
+    },
+    "Books": {
+      "type": "object",
+      "required": [
+        "authors",
+        "isbn",
+        "publisher",
+        "title",
+        "year"
+      ],
+      "properties": {
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isbn": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
